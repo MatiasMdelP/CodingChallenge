@@ -1,18 +1,20 @@
-for (i = 0; i <= 9; i++) {
-    document.getElementById("button-" + i).onclick = clickNum;
-}
-document.getElementById("button-.").onclick = clickNum;
+document.onload = function () {
+    for (i = 0; i <= 9; i++) {
+        document.getElementById("button-" + i).onclick = clickNum;
+    }
+    document.getElementById("button-.").onclick = clickNum;
 
-document.getElementById("button-+").onclick = clickOp;
-document.getElementById("button--").onclick = clickOp;
-document.getElementById("button-*").onclick = clickOp;
-document.getElementById("button-/").onclick = clickOp;
+    document.getElementById("button-+").onclick = clickOp;
+    document.getElementById("button--").onclick = clickOp;
+    document.getElementById("button-*").onclick = clickOp;
+    document.getElementById("button-/").onclick = clickOp;
 
-document.getElementById("button-=").onclick = clickEquals;
+    document.getElementById("button-=").onclick = clickEquals;
 
-document.getElementById("button-clr").onclick = clear;
+    document.getElementById("button-clr").onclick = clear;
+};
 
-var temp = "";
+var displayStr = "";
 var opArray = [];
 var clearNext = true;
 
@@ -21,7 +23,12 @@ function clickNum() {
         clear();
         clearNext = false;
     }
-    temp += this.innerHTML;
+
+    if (this.innerHTML === "." && temp.indexOf(".") !== -1) {
+        return;
+    }
+
+    displayStr += this.innerHTML;
     concatDisplay(this.innerHTML);
 }
 
@@ -30,20 +37,14 @@ function clickOp() {
         clear();
         clearNext = false;
     }
-    if (temp !== "") {
-        opArray.push(parseFloat(temp));
-        temp = "";
-    }
+    updateOpArray();
     opArray.push(this.innerHTML);
     concatDisplay(this.innerHTML);
 }
 
 function clickEquals() {
 
-    if (temp !== "") {
-        opArray.push(parseFloat(temp));
-        temp = "";
-    }
+    updateOpArray();
 
     var err = false;
 
@@ -105,12 +106,19 @@ function clickEquals() {
     clearNext = true;
 }
 
+function updateOpArray() {
+    if (displayStr !== "") {
+        opArray.push(parseFloat(temp));
+        displayStr = "";
+    }
+}
+
 function concatDisplay(char) {
     document.getElementById("display").innerHTML += char;
 }
 
 function clear() {
     document.getElementById("display").innerHTML = "";
-    temp = "";
+    displayStr = "";
     opArray = [];
 }

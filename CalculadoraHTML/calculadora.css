@@ -1,25 +1,28 @@
-﻿.calc {
-    position: absolute;
-    left: 25%;
-    display: inline;
-    border: solid 1px black;
-    border-radius: 5px;
+﻿body {
+    text-align: center;
 }
 
-.display td {
-    border: solid 1px black;
-    border-radius: 5px;
-    font-size: 40px;
+.calc {
+    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.panel {
+.calc td, .calc button {
+    background-color: white;
+    font-size: 30px;
+}
+
+#display {
+    height: 40px;
+}
+
+.calc button {
     width: 100%;
+    padding: 25px;
+    border: none;
 }
 
-.panel button {
-    width: 100%;
-}
-
-.panel button {
-    font-size: 40px;
+.calc button:hover {
+    background-color: lightgray;
 }
