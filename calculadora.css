@@ -1,0 +1,25 @@
+﻿.calc {
+    position: absolute;
+    left: 25%;
+    display: inline;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+.display td {
+    border: solid 1px black;
+    border-radius: 5px;
+    font-size: 40px;
+}
+
+.panel {
+    width: 100%;
+}
+
+.panel button {
+    width: 100%;
+}
+
+.panel button {
+    font-size: 40px;
+}
