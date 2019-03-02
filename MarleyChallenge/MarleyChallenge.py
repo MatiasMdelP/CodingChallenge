@@ -1,9 +1,16 @@
-for i in range(1, 100):
-	if i % 3 == 0 and i % 5 == 0:
-		print("marleymirko")
-	elif i % 3 == 0:
-		print("marley")
-	elif i % 5 == 0:
-		print("mirko")
+MAX = 100
+N1 = 3
+N2 = 5
+REPLACE1 = "marley"
+REPLACE2 = "mirko"
+REPLACEBOTH = "marleymirko"
+
+for i in range(1, MAX):
+	if i % N1 == 0 and i % N2 == 0:
+		print(REPLACEBOTH)
+	elif i % N1 == 0:
+		print(REPLACE1)
+	elif i % N2 == 0:
+		print(REPLACE2)
 	else:
 		print(i)
